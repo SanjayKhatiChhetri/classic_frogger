@@ -209,7 +209,7 @@ function createObstacle() {
 
   // //Lane 3
   for (let i = 0; i < 2; i++) {
-    let x = i * 400;
+    let x = i * 200;
 
     landBugs.push(
       new myBugs(x, Bugs.height - Frog * 4 - 49, Frog, Frog - 5, 2, "car")
@@ -305,6 +305,7 @@ function recreateBugs() {
     waterBugs[i].bugsCanvas();
   }
 
+  // checking for collisision with frog
   for (i = 0; i < landBugs.length; i++) {
     if (detectCollision(frogObj, landBugs[i])) {
       ctxBugs.drawImage(
@@ -321,6 +322,7 @@ function recreateBugs() {
       resetGame();
     }
   }
+  // for water region from 100 to 350 
   if (frogObj.yAxis < 351 && frogObj.yAxis > 100) {
     safeState = false;
     for (i = 0; i < waterBugs.length; i++) {
